@@ -8,7 +8,7 @@ const INSTAGRAM_API = 'https://api.instagram.com/v1'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.marko(require('../template/index.marko', {}))
 });
 
 router.get('/login', function(req, res, next) {
@@ -40,10 +40,8 @@ router.post('/search', function(req, res, next) {
   let hashtags = stringToArray(req.body.hashtagInput)
   let location = req.body.locationInput
 
-  let toEmbed = queryIGHashtag(hashtags[0])
-  console.log(toEmbed )
-  res.render('index', {frames: toEmbed})
-
+  // let toEmbed = queryIGHashtag(hashtags[0])
+  res.marko(require('../template/search.marko', {}))
 })
 
 // returns string if can't be done
@@ -56,24 +54,23 @@ function stringToArray(str) {
 
 function queryIGHashtag(hashtag) {
   const REQUEST_URL = INSTAGRAM_API + '/tags/' + hashtag + '/media/recent?access_token=' + CLIENT.ACCESS_TOKEN
+  console.log(REQUEST_URL)
   // Configure the request
-  var options = {
+  let options = {
       url: REQUEST_URL,
       method: 'GET',
-      // client_id: CLIENT.IG_CLIENT_ID,
-      // client_secret: CLIENT.IG_CLIENT_SECRET,              
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      json: true
   }
-
-  request(options)
-    .then(function(response) {
-      // console.log(response)
+  
+  console.log(request(options)
+    .then(function(response) { 
       return response
     }).catch(function (err) {
       console.error(err)
-    })
+    }))
 }
 
 function queryIGLocation(location) {
