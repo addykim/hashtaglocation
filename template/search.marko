@@ -1,5 +1,7 @@
-<include('./index.marko')>
+<include('./layout.marko')>
   <@body>
-    For search
+    <for(result in input.hashtags)>
+      <li>${result}</li>
+    </for>
   </@body>
 </include>

@@ -8,7 +8,9 @@ const INSTAGRAM_API = 'https://api.instagram.com/v1'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.marko(require('../template/index.marko', {}))
+  res.marko(require('../template/index.marko'), {
+    title:'index'
+  })
 });
 
 router.get('/login', function(req, res, next) {
@@ -37,11 +39,12 @@ router.get('/authorize', function(req, res, next) {
 })
 
 router.post('/search', function(req, res, next) {
-  let hashtags = stringToArray(req.body.hashtagInput)
-  let location = req.body.locationInput
+  // let hashtags = stringToArray(req.body.hashtagInput)
+  // let location = req.body.locationInput
 
   // let toEmbed = queryIGHashtag(hashtags[0])
-  res.marko(require('../template/search.marko', {}))
+  console.log('rendering search')
+  res.marko(require('../template/search.marko'), {name: 'frank', hashtags:['hashtags', 'wow'], title: 'wow'})
 })
 
 // returns string if can't be done
