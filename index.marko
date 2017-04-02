@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>${input.title}</title>
+    <title>${data.title}</title>
 
     <!-- Bootstrap -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -32,7 +32,23 @@
       </div>
     </nav>
     <div class="container">
-      <include(input.body)/>
+      <div class="row">
+        <a href="/login">Login</a>
+        <form method="post" action="search">
+          <div class="form-group">
+            <label for="hashtagInput">Search by HashTag</label>
+            <input type="text" class="form-control" id="hashtagInput" name="hashtagInput" placeholder="#cats #dogs">
+          </div>
+          <div class="form-group">
+            <label for="locationInput">Search by Location</label>
+            <input type="text" class="form-control" id="locationInput" name="locationInput" placeholder="Austin, TX">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="row">
+        <include(data.body)/>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
