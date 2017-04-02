@@ -1,11 +1,15 @@
-<form>
+<a href="/login">Login</a>
+<form method="post" action="search">
   <div class="form-group">
     <label for="hashtagInput">Search by HashTag</label>
-    <input type="text" class="form-control" id="hashtagInput" placeholder="#cats #dogs">
+    <input type="text" class="form-control" id="hashtagInput" name="hashtagInput" placeholder="#cats #dogs">
   </div>
   <div class="form-group">
-    <label for="queryInput">Search by Location</label>
-    <input type="text" class="form-control" id="locationInput" placeholder="Austin, TX">
+    <label for="locationInput">Search by Location</label>
+    <input type="text" class="form-control" id="locationInput" name="locationInput" placeholder="Austin, TX">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<div>
+{{!-- <iframe/> --}}
+</div>
